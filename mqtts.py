@@ -67,15 +67,19 @@ if MQTT:
     mqttc.loop_start()                  #start the loop
 
 while(True):
-    cmd = input("Choose command (EXIT): ")
+    cmd = input("Choose command (EXIT, b(riefing), l(unch), t(esting)): ")
     if(cmd == "EXIT" or cmd == "e"):
         print("exiting..")
         if MQTT:    
             mqttc.loop_stop()
             mqttc.disconnect()
         exit()
+    elif(cmd == 'b'):
+        speak("mandatory briefing starts in five minutes")
+    elif(cmd == 'l'):
+        speak("lunch starts in five minutes")
     elif(cmd == 't'):
-        print("connected: "+str(mqttc.is_connected()))
+        speak("Live testing will commence in five minutes")
     else:
         print("Unknown command: "+cmd)
         continue

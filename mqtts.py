@@ -2,6 +2,7 @@ import pyttsx3 # pip install pyttsx3
 import paho.mqtt.client as mqtt #pip install paho-mqtt
 import json
 import os
+import random
 
 text = "6.1.4 Test: 0.1 µW to 20 W, 2 dB increments PRN: L1, G1, L2, L5"
 class _TTS:
@@ -25,7 +26,7 @@ MQTT = True
 
 if MQTT:
     print('Connecting to mqtt: '+os.getenv("MQTTUSER")+"@"+os.getenv("MQTTHOST"))
-    mqttc = mqtt.Client(client_id='mqtt-rds', userdata=None, protocol=mqtt.MQTTv5, transport='tcp')
+    mqttc = mqtt.Client(client_id='mqtt-tts-'+str(random.randint(0, 999)), userdata=None, protocol=mqtt.MQTTv5, transport='tcp')
     mqttc.username_pw_set(os.getenv("MQTTUSER"), password=os.getenv("MQTTPASS"))
     mqttc.connect(os.getenv("MQTTHOST"))
     mqttc.subscribe("basic_status/testevent")

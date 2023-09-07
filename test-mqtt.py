@@ -31,10 +31,10 @@ MQTT = True
 
 if MQTT:
     print('Connecting to mqtt: '+os.getenv("MQTTUSER")+"@"+os.getenv("MQTTHOST"))
-    mqttc = mqtt.Client(client_id='mqtt-rds', userdata=None, protocol=mqtt.MQTTv5, transport='tcp')
+    mqttc = mqtt.Client(client_id='mqtt-tts-test', userdata=None, protocol=mqtt.MQTTv5, transport='tcp')
     mqttc.username_pw_set(os.getenv("MQTTUSER"), password=os.getenv("MQTTPASS"))
     mqttc.connect(os.getenv("MQTTHOST"))
-    mqttc.subscribe("basic_status/testevent")
+    mqttc.subscribe("basic_status/site1")
     
 
 def on_message(client, userdata, message):

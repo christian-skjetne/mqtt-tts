@@ -10,6 +10,7 @@ class _TTS:
     rate = None
     def __init__(self):
         self.engine = pyttsx3.init()
+        self.engine.setProperty("rate",180)
     def start(self,text_):
         self.engine.say(text_)
         self.engine.runAndWait()
@@ -47,7 +48,7 @@ def on_message(client, userdata, message):
     print("message received " ,msg)
     if( 'siteid' in jmsg and jmsg['siteid'] == 1 and 'status' in jmsg and jmsg['status'] == "start" ):
         print("got start msg")
-        txt = "starting test now: "+jmsg['name']+":, "+jmsg['name']+":, "+jmsg['name']+","
+        txt = "starting test now!: "+jmsg['name']+":-, "+jmsg['name']+":-, "+jmsg['name']+","
         if('description' in jmsg):
             rt1 = jmsg['description']
             if('comment' in jmsg):

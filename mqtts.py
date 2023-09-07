@@ -60,7 +60,7 @@ def on_message(client, userdata, message):
         speak(txt)
     elif( 'siteid' in jmsg and jmsg['siteid'] == 1 and 'status' in jmsg and jmsg['status'] == "stop" ):
         print("got stop msg")
-        speak("Test "+jmsg['name']+" over.")
+        speak("Test "+jmsg['name']+" over."+" Test "+jmsg['name']+" over.")
 
 if MQTT:
     mqttc.on_message=on_message         #attach function to callback
